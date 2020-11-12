@@ -4,8 +4,6 @@ import * as React from 'react';
 import { renderToString } from 'react-dom/server'
 
 const rglr = readFileSync(`${__dirname}/../_fonts/NotoSansJP-Regular.otf`).toString('base64');
-const bold = readFileSync(`${__dirname}/../_fonts/NotoSansJP-Bold.otf`).toString('base64');
-const thin = readFileSync(`${__dirname}/../_fonts/NotoSansJP-Thin.otf`).toString('base64');
 
 const Css = () => {
     return <style dangerouslySetInnerHTML={{ __html: `
@@ -14,20 +12,6 @@ const Css = () => {
             font-style:  normal;
             font-weight: normal;
             src: url(data:font/otf;charset=utf-8;base64,${rglr}) format('otf');
-        }
-
-        @font-face {
-            font-family: 'Noto Sans JP';
-            font-style:  normal;
-            font-weight: bold;
-            src: url(data:font/woff2;charset=utf-8;base64,${bold}) format('otf');
-        }
-
-        @font-face {
-            font-family: 'Noto Sans JP';
-            font-style: normal;
-            font-weight: thin;
-            src: url(data:font/woff2;charset=utf-8;base64,${thin})  format("otf");
         }
 
         body {
