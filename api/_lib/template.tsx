@@ -3,31 +3,31 @@ import { readFileSync } from 'fs';
 import * as React from 'react';
 import { renderToString } from 'react-dom/server'
 
-const rglr = readFileSync(`${__dirname}/../_fonts/Inter-Regular.woff2`).toString('base64');
-const bold = readFileSync(`${__dirname}/../_fonts/Inter-Bold.woff2`).toString('base64');
-const mono = readFileSync(`${__dirname}/../_fonts/Vera-Mono.woff2`).toString('base64');
+const rglr = readFileSync(`${__dirname}/../_fonts/NotoSansJP-Regular.otf`).toString('base64');
+const bold = readFileSync(`${__dirname}/../_fonts/NotoSansJP-Bold.otf`).toString('base64');
+const thin = readFileSync(`${__dirname}/../_fonts/NotoSansJP-Thin.otf`).toString('base64');
 
 const Css = () => {
     return <style dangerouslySetInnerHTML={{ __html: `
         @font-face {
-            font-family: 'Inter';
+            font-family: 'Noto Sans JP';
             font-style:  normal;
             font-weight: normal;
-            src: url(data:font/woff2;charset=utf-8;base64,${rglr}) format('woff2');
+            src: url(data:font/otf;charset=utf-8;base64,${rglr}) format('otf');
         }
 
         @font-face {
-            font-family: 'Inter';
+            font-family: 'Noto Sans JP';
             font-style:  normal;
             font-weight: bold;
-            src: url(data:font/woff2;charset=utf-8;base64,${bold}) format('woff2');
+            src: url(data:font/woff2;charset=utf-8;base64,${bold}) format('otf');
         }
 
         @font-face {
-            font-family: 'Vera';
+            font-family: 'Noto Sans JP';
             font-style: normal;
-            font-weight: normal;
-            src: url(data:font/woff2;charset=utf-8;base64,${mono})  format("woff2");
+            font-weight: thin;
+            src: url(data:font/woff2;charset=utf-8;base64,${thin})  format("otf");
         }
 
         body {
@@ -58,7 +58,7 @@ const Svg = ({ title }: { title: string }) => <svg
       x="50%"
       y="279"
       fontSize="64px"
-      fontFamily="'Vera'"
+      fontFamily="'Noto Sans JP'"
       textAnchor="middle"
       fill="rgb(51, 51, 51)"
     >{title}</text>
@@ -66,7 +66,7 @@ const Svg = ({ title }: { title: string }) => <svg
       x="50%"
       y="342"
       fontSize="32px"
-      fontFamily="'Vera'"
+      fontFamily="'Noto Sans JP'"
       textAnchor="middle"
       fill="rgba(51, 51, 51, 0.75)"
     >にわとりになる日まで</text>
