@@ -16,5 +16,5 @@ export function parseRequest(req: IncomingMessage) {
         text = arr.join('.');
     }
 
-    return text;
+    return decodeURIComponent(text);
 }
