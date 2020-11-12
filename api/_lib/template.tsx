@@ -3,17 +3,19 @@ import { readFileSync } from 'fs';
 import * as React from 'react';
 import { renderToString } from 'react-dom/server'
 
-const rglr = readFileSync(`${__dirname}/../_fonts/NotoSansJP-Regular.otf`).toString('base64');
+const rglr = readFileSync(`${__dirname}/../_fonts/NotoSansJP-Regular.woff`).toString('base64');
+
+const Font = () => <style type="text/css" dangerouslySetInnerHTML={{ __html: `
+  @font-face {
+      font-family: 'Sans';
+      font-style:  normal;
+      font-weight: normal;
+      src: url(data:font/woff;charset=utf-8;base64,${rglr}) format('woff');
+  }
+`}} />
 
 const Css = () => {
     return <style dangerouslySetInnerHTML={{ __html: `
-        @font-face {
-            font-family: 'Noto Sans JP';
-            font-style:  normal;
-            font-weight: normal;
-            src: url(data:font/otf;charset=utf-8;base64,${rglr}) format('otf');
-        }
-
         body {
           margin: 0;
           padding: 0;
@@ -28,6 +30,9 @@ const Svg = ({ title }: { title: string }) => <svg
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
   >
+    <defs>
+      <Font />
+    </defs>
     <rect width="1200" height="630" fill="white" />
     <rect
       x="100"
@@ -42,7 +47,7 @@ const Svg = ({ title }: { title: string }) => <svg
       x="50%"
       y="279"
       fontSize="64px"
-      fontFamily="'Noto Sans JP'"
+      fontFamily="'Sans'"
       textAnchor="middle"
       fill="rgb(51, 51, 51)"
     >{title}</text>
@@ -50,7 +55,7 @@ const Svg = ({ title }: { title: string }) => <svg
       x="50%"
       y="342"
       fontSize="32px"
-      fontFamily="'Noto Sans JP'"
+      fontFamily="'Sans'"
       textAnchor="middle"
       fill="rgba(51, 51, 51, 0.75)"
     >にわとりになる日まで</text>
